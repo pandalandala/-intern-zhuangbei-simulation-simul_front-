@@ -1,0 +1,1 @@
+gcc -o forTest.exe forTest.c -g

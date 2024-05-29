@@ -1,0 +1,95 @@
+{
+  "name": "ee",
+  "version": "3.9.0",
+  "description": "A fast, desktop software development framework",
+  "main": "main.js",
+  "scripts": {
+    "dev": "ee-bin dev",
+    "dev-frontend": "ee-bin dev --serve=frontend",
+    "dev-electron": "ee-bin dev --serve=electron",
+    "dev-go": "ee-bin dev --serve=go",
+    "build-frontend": "ee-bin build",
+    "build-go-w": "ee-bin move --flag=go_static,go_config,go_package,go_images && ee-bin build --cmds=go_build_w",
+    "build-go-m": "ee-bin move --flag=go_static,go_config,go_package,go_images && ee-bin build --cmds=go_build_m",
+    "build-go-l": "ee-bin move --flag=go_static,go_config,go_package,go_images && ee-bin build --cmds=go_build_l",
+    "start": "ee-bin start",
+    "move": "ee-bin move --flag=go_static,go_config,go_package,go_images",
+    "rd": "ee-bin move --flag=frontend_dist",
+    "encrypt": "ee-bin encrypt",
+    "clean": "ee-bin clean",
+    "icon": "ee-bin icon",
+    "reload": "nodemon --config ./electron/config/nodemon.json",
+    "rebuild": "electron-rebuild",
+    "re-sqlite": "electron-rebuild -f -w better-sqlite3",
+    "build-w": "electron-builder --config=./electron/config/builder.json -w=nsis --x64",
+    "build-w-32": "electron-builder --config=./electron/config/builder.json -w=nsis --ia32",
+    "build-w-64": "electron-builder --config=./electron/config/builder.json -w=nsis --x64",
+    "build-w-arm64": "electron-builder --config=./electron/config/builder.json -w=nsis --arm64",
+    "build-wz": "electron-builder --config=./electron/config/builder.json -w=7z --x64",
+    "build-wz-32": "electron-builder --config=./electron/config/builder.json -w=7z --ia32",
+    "build-wz-64": "electron-builder --config=./electron/config/builder.json -w=7z --x64",
+    "build-wz-arm64": "electron-builder --config=./electron/config/builder.json -w=7z --arm64",
+    "build-m": "electron-builder --config=./electron/config/builder.json -m",
+    "build-m-arm64": "electron-builder --config=./electron/config/builder.json -m --arm64",
+    "build-l": "electron-builder --config=./electron/config/builder.json -l=deb --x64",
+    "build-l-32": "electron-builder --config=./electron/config/builder.json -l=deb --ia32",
+    "build-l-64": "electron-builder --config=./electron/config/builder.json -l=deb --x64",
+    "build-l-arm64": "electron-builder --config=./electron/config/builder.json -l=deb --arm64",
+    "build-l-armv7l": "electron-builder --config=./electron/config/builder.json -l=deb --armv7l",
+    "build-lr-64": "electron-builder --config=./electron/config/builder.json -l=rpm --x64",
+    "build-lp-64": "electron-builder --config=./electron/config/builder.json -l=pacman --x64",
+    "test": "set DEBUG=* && electron . --env=local",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/dromara/electron-egg.git",
+  "keywords": [
+    "Electron",
+    "electron-egg",
+    "ElectronEgg"
+  ],
+  "build": {
+    "appId": "com.example.ee",
+    "productName": "ee",
+    "directories": {
+      "output": "D:/software/package"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/",
+      "!frontend/node_modules"
+    ],
+    "electronVersion": "21.4.4",
+    "extraMetadata": {
+      "main": "main.js"
+    }
+  },
+  "author": "哆啦好梦, Inc <530353222@qq.com>",
+  "license": "Apache",
+  "devDependencies": {
+    "@electron/rebuild": "^3.6.0",
+    "babel-plugin-component": "^1.1.1",
+    "debug": "^4.3.3",
+    "ee-bin": "^1.4.0",
+    "electron": "^21.4.4",
+    "electron-builder": "^23.6.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "@vue-flow/core": "^1.28.0",
+    "@vue-flow/node-resizer": "^1.3.6",
+    "better-sqlite3": "^8.4.0",
+    "dayjs": "^1.10.7",
+    "echarts": "^5.4.3",
+    "ee-core": "^2.7.0",
+    "electron-updater": "^5.3.0",
+    "element-plus": "^2.5.6",
+    "file-saver": "^2.0.5",
+    "lodash": "^4.17.21",
+    "rticonnextdds-connector": "^1.2.2",
+    "vuedraggable": "^4.1.0",
+    "vuex": "^4.1.0"
+  }
+}

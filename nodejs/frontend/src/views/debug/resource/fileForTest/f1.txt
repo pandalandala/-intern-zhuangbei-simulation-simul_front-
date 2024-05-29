@@ -1,0 +1,44 @@
+#include <stdio.h>
+int num;
+void BuildHeap(int A[],int i,int N)	//构造堆  
+{
+	int c,temp;
+    for (temp=A[i];2*i<=N;i=c)	//temp记录下父母节点的值，c为一个子女节点 
+	{
+        c=2*i;				
+        if(c<N&& A[c+1]>A[c])//找到最大的子女节点 
+            ++c;              
+        if(temp<A[c])		//父母节点值等于子女节点中大的 
+            A[i]=A[c];		
+        else
+            break;					
+    }
+    A[i]=temp;//对被交换的子女节点赋值 比如在2 9 8 6 5 7中9和2交换后，2需要和6再进行交换，最后只需要对6最开始的位置赋值2就行 
+}
+void Heapsort(int a[])	//排序 
+	{
+		int i,temp;
+		for(i=num/2;i>=1;i--)	//从最后一个父母节点开始，知道根节点 
+			{
+				BuildHeap(a,i,num);
+			}
+		for(i=num;i>0;i--)	//删除根节点后，重新构造堆 
+			{
+				temp=a[1];
+				a[1]=a[i];
+				a[i]=temp;
+				BuildHeap(a,1,i-1);
+			}
+	}
+int main()
+{
+	printf("请输入要排序的数的个数："); 
+	scanf("%d",&num);
+	int i,a[num+1];
+	printf("请输入元素：");
+	for(i=1;i<=num;i++)
+		scanf("%d",&a[i]);
+	Heapsort(a);
+	for(i=1;i<=num;i++)
+		printf("%d ",a[i]);
+ }
